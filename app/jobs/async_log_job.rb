@@ -19,7 +19,7 @@ class AsyncLogJob < ApplicationJob
 
   # ↑↑↑↑ retry_onの注意点 : sidekiqなどのバックエンド側でリトライの仕組みを持っていないといけない ↑↑↑↑
 
-    # エラーをキャッチしてジョブの破棄
+  # エラーをキャッチしてジョブの破棄
   discard_on ArgumentError
 
   # 非同期処理時に呼ばれる
