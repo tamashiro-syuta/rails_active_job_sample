@@ -22,6 +22,11 @@ class AsyncLogJob < ApplicationJob
   # エラーをキャッチしてジョブの破棄
   discard_on ArgumentError
 
+  # ブロックを使う例
+  # discard_on StandardError do | job, error |
+  #   SomeNotifier.push(error)
+  # end
+
   # 非同期処理時に呼ばれる
   def perform(message: 'hello')
     # DBに保存
