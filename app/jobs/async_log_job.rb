@@ -12,6 +12,13 @@ class AsyncLogJob < ApplicationJob
     end
   end
 
+  # エラーをキャッチすると、5秒まってリトライする（3回まで）
+  retry_on StandardError, wait: 5.seconds, attempts: 3
+  # 複数の例外クラスを指定するパターン
+  # retry_on ArgumentError, ZeroDivisionError, wait: 5.seconds, attempts: 3
+
+  # ↑↑↑↑ retry_onの注意点 : sidekiqなどのバックエンド側でリトライの仕組みを持っていないといけない ↑↑↑↑
+
   # 非同期処理時に呼ばれる
   def perform(message: 'hello')
     # DBに保存
