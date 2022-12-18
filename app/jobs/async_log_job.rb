@@ -1,7 +1,9 @@
 class AsyncLogJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    # Do something later
+  # 非同期処理時に呼ばれる
+  def perform(message: 'hello')
+    # DBに保存
+    AsyncLog.create!(message: message)
   end
 end
