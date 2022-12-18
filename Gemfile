@@ -56,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # logに出るwarningを消すため
 # https://github.com/ruby/net-imap/issues/16
 gem 'net-http'
+
+gem 'sidekiq'
